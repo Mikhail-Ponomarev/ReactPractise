@@ -1,14 +1,28 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import * as ReactDOMClient from "react-dom/client";
 
-const elem = document.getElementById("root");
 const txt = "Hello world!";
 const style = "text";
 const clickInput = () => {
   console.log("Click");
 };
-const input = (
-  <input placeholder={txt} className={style} onClick={clickInput} />
+// const input = (
+//   <input placeholder={txt} className={style} onClick={clickInput} />
+// );
+
+const elem = ReactDOMClient.createRoot(document.getElementById("root"));
+
+//elem.render(input);
+
+// создание компонента
+
+const Text = () => <p className="paragraph">My first steps in React</p>;
+
+const App = () => (
+  <div className="block">
+    <input placeholder={txt} className={style} onClick={clickInput} />;
+    <Text />
+  </div>
 );
 
-ReactDOM.render(input, elem);
+elem.render(<App />);
